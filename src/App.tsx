@@ -89,7 +89,8 @@ function App() {
     // Draw the cropped image
     const scaleX = imgRef.current.naturalWidth / imgRef.current.width;
     const scaleY = imgRef.current.naturalHeight / imgRef.current.height;
-
+// Ensure the base image has crossOrigin set to "anonymous"
+    imgRef.current.crossOrigin = "anonymous";
     ctx.drawImage(
       imgRef.current,
       completedCrop.x * scaleX,
@@ -105,6 +106,7 @@ function App() {
     // Load and draw the frame
     await new Promise<void>((resolve) => {
       const frameImage = new Image();
+      frameImage.crossOrigin = "anonymous";
       frameImage.onload = () => {
         ctx.drawImage(frameImage, 0, 0, 1080, 1080);
         resolve();
@@ -114,7 +116,7 @@ function App() {
 
     // Create download link
     const link = document.createElement('a');
-    link.download = 'st-patricks-175th-twibbon.png';
+    link.download = 'st-patricks-175th.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
   };
@@ -153,12 +155,12 @@ function App() {
         <div className="text-center mb-12 relative">
           <h1 className="text-4xl font-bold text-green-800 mb-4">175th Years of Fide et Labore</h1>
           <p className="text-green-600">Celebrate St. Patrick's College's 175th Anniversary with a Special Profile Frame</p>
-          {/* <button
+          <button
             onClick={() => setIsAdminOpen(!isAdminOpen)}
             className="absolute right-4 top-0 p-2 text-green-600 hover:text-green-800 transition-colors"
           >
             <Settings className="w-6 h-6" />
-          </button> */}
+          </button>
         </div>
 
         {isAdminOpen && (
