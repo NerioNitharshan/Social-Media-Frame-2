@@ -153,12 +153,12 @@ function App() {
         <div className="text-center mb-12 relative">
           <h1 className="text-4xl font-bold text-green-800 mb-4">175th Years of Fide et Labore</h1>
           <p className="text-green-600">Celebrate St. Patrick's College's 175th Anniversary with a Special Profile Frame</p>
-          <button
+          {/* <button
             onClick={() => setIsAdminOpen(!isAdminOpen)}
             className="absolute right-4 top-0 p-2 text-green-600 hover:text-green-800 transition-colors"
           >
             <Settings className="w-6 h-6" />
-          </button>
+          </button> */}
         </div>
 
         {isAdminOpen && (
